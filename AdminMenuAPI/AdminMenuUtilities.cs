@@ -18,22 +18,22 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        if (reasonPages.Any(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase)))
+        if (reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
         {
             return false;
         }
 
-        reasonPages.Add(new AdminMenuPage
+        reasonPages.Add(new Menu
         {
-            Title = category,
-            Reasons = new string[0]
+            Category = category,
+            Commands = new string[0]
         });
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
         return true;
     }
 
-    public static async Task<bool> InsertCategory(this CenterHtmlMenu menu, string modulePath, string category, params string[] options)
+    public static async Task<bool> InsertCategory(this CenterHtmlMenu menu, string modulePath, string category, params string[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -46,15 +46,15 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        if (reasonPages.Any(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase)))
+        if (reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
         {
             return false;
         }
 
-        reasonPages.Add(new AdminMenuPage
+        reasonPages.Add(new Menu
         {
-            Title = category,
-            Reasons = options
+            Category = category,
+            Commands = commands
         });
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
@@ -74,18 +74,18 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        if (!reasonPages.Any(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase)))
+        if (!reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
         {
             return false;
         }
 
-        reasonPages.RemoveAll(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase));
+        reasonPages.RemoveAll(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
         return true;
     }
 
-    public static async Task<bool> RemoveReason(this CenterHtmlMenu menu, string modulePath, string category, string reason)
+    public static async Task<bool> RemoveReason(this CenterHtmlMenu menu, string modulePath, string category, string command)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -98,24 +98,24 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        if (!reasonPages.Any(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase)))
+        if (!reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
         {
             return false;
         }
 
-        var page = reasonPages.First(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase));
-        if (!page.Reasons.Contains(reason, StringComparer.OrdinalIgnoreCase))
+        var page = reasonPages.First(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        if (!page.Commands.Contains(command, StringComparer.OrdinalIgnoreCase))
         {
             return false;
         }
 
-        page.Reasons = page.Reasons.Where(x => !string.Equals(x, reason, StringComparison.OrdinalIgnoreCase)).ToArray();
+        page.Commands = page.Commands.Where(x => !string.Equals(x, command, StringComparison.OrdinalIgnoreCase)).ToArray();
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
         return true;
     }
 
-    public static async Task<bool> AddReason(this CenterHtmlMenu menu, string modulePath, string category, string reason)
+    public static async Task<bool> AddReason(this CenterHtmlMenu menu, string modulePath, string category, string command)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -128,24 +128,24 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        if (!reasonPages.Any(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase)))
+        if (!reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
         {
             return false;
         }
 
-        var page = reasonPages.First(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase));
-        if (page.Reasons.Contains(reason, StringComparer.OrdinalIgnoreCase))
+        var page = reasonPages.First(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        if (page.Commands.Contains(command, StringComparer.OrdinalIgnoreCase))
         {
             return false;
         }
 
-        page.Reasons = page.Reasons.Append(reason).ToArray();
+        page.Commands = page.Commands.Append(command).ToArray();
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
         return true;
     }
 
-    public static async Task<bool> AddReasons(this CenterHtmlMenu menu, string modulePath, string category, params string[] reasons)
+    public static async Task<bool> AddReasons(this CenterHtmlMenu menu, string modulePath, string category, params string[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -158,34 +158,24 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        if (!reasonPages.Any(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase)))
+        if (!reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
         {
             return false;
         }
 
-        AdminMenuPage? page = reasonPages.First(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase));
-        page.Reasons = page.Reasons.Concat(reasons).ToArray();
+        Menu? page = reasonPages.First(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        page.Commands = page.Commands.Concat(commands).ToArray();
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
         return true;
     }
 
-    private static async Task<(List<AdminMenuPage> list, string path)> GetConfig(string modulePath)
+    private static async Task<(List<Menu> list, string path)> GetConfig(string modulePath)
     {
         // Get the path to the AdminMenu.json file
         string configPath = Path.Combine(Directory.GetParent(Directory.GetParent(modulePath).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
 
         // Deserialize the AdminMenu.json file
-        using FileStream fs = new FileStream(configPath, FileMode.Open);
-        var document = await JsonDocument.ParseAsync(fs);
-        var root = document.RootElement;
-        var menuItemsJson = root.GetProperty("MenuItems").GetRawText();
-        return (JsonSerializer.Deserialize<List<AdminMenuPage>>(menuItemsJson), configPath);
+        return (JsonSerializer.Deserialize<MenuConfig>(await File.ReadAllTextAsync(configPath)).MenuItems.ToList(), configPath);
     }
-}
-
-public class AdminMenuPage
-{
-    public string Category { get; set; }
-    public string[] Reasons { get; set; }
 }

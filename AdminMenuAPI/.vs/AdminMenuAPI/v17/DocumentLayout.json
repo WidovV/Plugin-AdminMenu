@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\adminmenuutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:adminmenuutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\menuconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:menuconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MenuConfig.cs",
+              "DocumentMoniker": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\MenuConfig.cs",
+              "RelativeDocumentMoniker": "MenuConfig.cs",
+              "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\MenuConfig.cs",
+              "RelativeToolTip": "MenuConfig.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAqwBEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-07T12:16:04.448Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -32,7 +50,7 @@
               "RelativeDocumentMoniker": "AdminMenuUtilities.cs",
               "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuUtilities.cs",
               "RelativeToolTip": "AdminMenuUtilities.cs",
-              "ViewState": "AQIAAKIAAAAAAAAAAAAAwLIAAABIAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADgAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-07T07:38:47.957Z",
               "EditorCaption": ""
