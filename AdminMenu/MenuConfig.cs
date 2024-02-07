@@ -7,7 +7,7 @@ using CounterStrikeSharp.API.Core;
 
 namespace AdminMenu;
 
-internal class MenuConfig : BasePluginConfig
+public class MenuConfig : BasePluginConfig
 {
     public Menu[] MenuItems { get; set; } = new[]
     {
@@ -16,11 +16,18 @@ internal class MenuConfig : BasePluginConfig
             Title = "Player commands",
             Commands = new[]
             {
-                "css_kick",
-
+                "css_kick"
             }
         }
     };
+
+    public string[] AdminMenuCommands { get; set; } = new[]
+    {
+        "css_admin",
+        "css_adminmenu"
+    };
+
+    public string AdminMenuFlag { get; set; } = "css/generic";
 }
 
 public class Menu

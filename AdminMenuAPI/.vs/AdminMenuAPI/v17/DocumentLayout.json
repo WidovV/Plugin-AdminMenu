@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\adminmenuutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:adminmenuutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminMenuUtilities.cs",
+              "DocumentMoniker": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuUtilities.cs",
+              "RelativeDocumentMoniker": "AdminMenuUtilities.cs",
+              "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuUtilities.cs",
+              "RelativeToolTip": "AdminMenuUtilities.cs",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAqwFgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-07T07:38:47.957Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
