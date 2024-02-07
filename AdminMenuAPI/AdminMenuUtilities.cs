@@ -176,12 +176,16 @@ public static class AdminMenuUtilities
         string configPath = Path.Combine(Directory.GetParent(Directory.GetParent(modulePath).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
 
         // Deserialize the AdminMenu.json file
-        return (JsonSerializer.Deserialize<List<AdminMenuPage>>(await File.ReadAllTextAsync(configPath)), configPath);
+        using FileStream fs = new FileStream(configPath, FileMode.Open);
+        var document = await JsonDocument.ParseAsync(fs);
+        var root = document.RootElement;
+        var menuItemsJson = root.GetProperty("MenuItems").GetRawText();
+        return (JsonSerializer.Deserialize<List<AdminMenuPage>>(menuItemsJson), configPath);
     }
 }
 
 public class AdminMenuPage
 {
-    public string Title { get; set; }
+    public string Category { get; set; }
     public string[] Reasons { get; set; }
 }
