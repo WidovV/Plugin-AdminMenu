@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CounterStrikeSharp.API.Core;
+﻿using CounterStrikeSharp.API.Core;
 
 namespace AdminMenu;
 
@@ -16,7 +11,17 @@ public class MenuConfig : BasePluginConfig
             Title = "Player commands",
             Commands = new[]
             {
+                "css_kick",
                 "css_kick"
+            }
+        },
+        new Menu
+        {
+            Title = "Fun commands",
+            Commands = new[]
+            {
+                "css_slap",
+
             }
         }
     };
