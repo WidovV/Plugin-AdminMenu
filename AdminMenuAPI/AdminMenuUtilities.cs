@@ -23,7 +23,7 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        reasonPages.Add(new ReasonPage
+        reasonPages.Add(new AdminMenuPage
         {
             Title = category,
             Reasons = new string[0]
@@ -51,7 +51,7 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        reasonPages.Add(new ReasonPage
+        reasonPages.Add(new AdminMenuPage
         {
             Title = category,
             Reasons = options
@@ -163,24 +163,24 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        ReasonPage? page = reasonPages.First(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase));
+        AdminMenuPage? page = reasonPages.First(x => string.Equals(x.Title, category, StringComparison.OrdinalIgnoreCase));
         page.Reasons = page.Reasons.Concat(reasons).ToArray();
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
         return true;
     }
 
-    private static async Task<(List<ReasonPage> list, string path)> GetConfig(string modulePath)
+    private static async Task<(List<AdminMenuPage> list, string path)> GetConfig(string modulePath)
     {
         // Get the path to the AdminMenu.json file
         string configPath = Path.Combine(Directory.GetParent(Directory.GetParent(modulePath).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
 
         // Deserialize the AdminMenu.json file
-        return (JsonSerializer.Deserialize<List<ReasonPage>>(await File.ReadAllTextAsync(configPath)), configPath);
+        return (JsonSerializer.Deserialize<List<AdminMenuPage>>(await File.ReadAllTextAsync(configPath)), configPath);
     }
 }
 
-public class ReasonPage
+public class AdminMenuPage
 {
     public string Title { get; set; }
     public string[] Reasons { get; set; }
