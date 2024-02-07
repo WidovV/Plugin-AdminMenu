@@ -40,10 +40,10 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
             player.PrintToChat("Invalid usage of the command. Usage: css_adminmenu");
         }
 
-        ShowTitleMenu(player);
+        ShowCategoriesMenu(player);
     }
 
-    private void ShowTitleMenu(CCSPlayerController player)
+    private void ShowCategoriesMenu(CCSPlayerController player)
     {
         CenterHtmlMenu menu = new("Admin menu");
         foreach (Menu reason in Config.MenuItems)
