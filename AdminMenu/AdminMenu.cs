@@ -1,5 +1,4 @@
 ﻿using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Menu;
@@ -8,6 +7,9 @@ namespace AdminMenu;
 
 public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
 {
+    public override string ModuleName => "Admin menu";
+    public override string ModuleVersion => "0.1";
+    public override string ModuleAuthor => "WidovV";
     public MenuConfig Config { get; set; }
 
     public void OnConfigParsed(MenuConfig config)
@@ -15,18 +17,15 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         Config = config;
     }
 
-    public override string ModuleName => "Admin menu";
-    public override string ModuleVersion => "0.1";
-    public override string ModuleAuthor => "WidovV";
-
     public override void Load(bool hotReload)
     {
+
+        // RegisterListener<Listeners.OnMapStart>(Listener_OnMapStart); // Commented out because i can't remember if i should use a list or dictionary for deserialize
         foreach (string command in Config.AdminMenuCommands)
         {
             AddCommand(command, "Open admin menu", AdminMenuCommand);
         }
     }
-
 
     [RequiresPermissions($"css/generic")]
     public void AdminMenuCommand(CCSPlayerController player, CommandInfo info)
@@ -49,13 +48,13 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         CenterHtmlMenu menu = new("Admin menu");
         foreach (Menu reason in Config.MenuItems)
         {
-            menu.AddMenuOption(reason.Title, (_, _) => ShowCommandsMenu(player, reason));
+            menu.AddMenuOption(reason.Category, (_, _) => ShowCommandsMenu(player, reason));
         }
     }
 
     private void ShowCommandsMenu(CCSPlayerController player, Menu menu)
     {
-        CenterHtmlMenu commandsMenu = new(menu.Title);
+        CenterHtmlMenu commandsMenu = new(menu.Category);
         foreach (string command in menu.Commands)
         {
             commandsMenu.AddMenuOption(command, (_,_) => player.ExecuteClientCommand(command));

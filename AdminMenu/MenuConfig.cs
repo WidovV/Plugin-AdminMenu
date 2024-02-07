@@ -8,20 +8,18 @@ public class MenuConfig : BasePluginConfig
     {
         new Menu
         {
-            Title = "Player commands",
+            Category = "Player commands",
             Commands = new[]
             {
-                "css_kick",
                 "css_kick"
             }
         },
         new Menu
         {
-            Title = "Fun commands",
+            Category = "Fun commands",
             Commands = new[]
             {
                 "css_slap",
-
             }
         }
     };
@@ -33,10 +31,12 @@ public class MenuConfig : BasePluginConfig
     };
 
     public string AdminMenuFlag { get; set; } = "css/generic";
+    public string AdminMenuTitle { get; set; } = "Admin menu";
+    public string CommandsMenuTitle { get; set; } = "Commands";
 }
 
 public class Menu
 {
-    public string Title { get; set; }
+    public string Category { get; set; }
     public string[] Commands { get; set; }
 }
