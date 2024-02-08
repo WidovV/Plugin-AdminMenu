@@ -31,7 +31,7 @@ The config will look like this ish:
        "Commands": [
           "css_slap"
           ]
-    }
+    },
   "AdminMenuCommands": [
     "css_admin",
     "css_adminmenu"
