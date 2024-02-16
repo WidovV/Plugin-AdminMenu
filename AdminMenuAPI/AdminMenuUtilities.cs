@@ -145,6 +145,10 @@ public static class AdminMenuUtilities
         return true;
     }
 
+    public static async Task<bool> AddFlag(string modulepath, string category, string flag)
+    {
+
+    }
     public static async Task<bool> AddCommand(string modulePath, string category, params string[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))

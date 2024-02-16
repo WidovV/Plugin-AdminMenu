@@ -8,7 +8,7 @@ public class MenuConfig : BasePluginConfig
     {
         new Menu
         {
-            Flag = "css/generic",
+            Flag = ["css/generic"],
             Category = "Player commands",
             Commands = new[]
             {
@@ -17,7 +17,7 @@ public class MenuConfig : BasePluginConfig
         },
         new Menu
         {
-            Flag = "css/generic",
+            Flag = ["css/generic"],
             Category = "Fun commands",
             Commands = new[]
             {
@@ -40,6 +40,6 @@ public class MenuConfig : BasePluginConfig
 public class Menu
 {
     public string Category { get; set; }
-    public string Flag { get; set; }
+    public string[] Flag { get; set; }
     public string[] Commands { get; set; }
 }
