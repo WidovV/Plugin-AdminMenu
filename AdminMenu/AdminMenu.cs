@@ -46,9 +46,14 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
     private void ShowCategoriesMenu(CCSPlayerController player)
     {
         CenterHtmlMenu menu = new("Admin menu");
-        foreach (Menu reason in Config.MenuItems)
+        foreach (Menu category in Config.MenuItems)
         {
-            menu.AddMenuOption(reason.Category, (_, _) => ShowCommandsMenu(player, reason));
+            if (!AdminManager.PlayerHasPermissions(player, category.Flag))
+            {
+                continue;
+            }
+
+            menu.AddMenuOption(category.Category, (_, _) => ShowCommandsMenu(player, category));
         }
     }
 
@@ -57,6 +62,11 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         CenterHtmlMenu commandsMenu = new(menu.Category);
         foreach (string command in menu.Commands)
         {
+            if (!AdminManager.PlayerHasPermissions(player, menu.Flag))
+            {
+                continue;
+            }
+
             commandsMenu.AddMenuOption(command, (_,_) => player.ExecuteClientCommand(command));
         }
     }
