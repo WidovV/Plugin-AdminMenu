@@ -33,7 +33,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> InsertCategory(string modulePath, string category, params string[] commands)
+    public static async Task<bool> AddCategory(string modulePath, string category, params string[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -85,7 +85,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> RemoveReason(string modulePath, string category, string command)
+    public static async Task<bool> RemoveCommand(string modulePath, string category, string command)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -115,7 +115,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> AddReason(string modulePath, string category, string command)
+    public static async Task<bool> AddCommand(string modulePath, string category, string command)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
