@@ -5,7 +5,7 @@ namespace AdminMenuAPI;
 
 public static class AdminMenuUtilities
 {
-    public static async Task<bool> AddCategory(this CenterHtmlMenu menu, string modulePath, string category)
+    public static async Task<bool> AddCategory(string modulePath, string category)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -33,7 +33,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> InsertCategory(this CenterHtmlMenu menu, string modulePath, string category, params string[] commands)
+    public static async Task<bool> InsertCategory(string modulePath, string category, params string[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -48,7 +48,7 @@ public static class AdminMenuUtilities
 
         if (reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
         {
-            return await AddCommand(menu, modulePath, category, commands);
+            return await AddCommand(modulePath, category, commands);
         }
 
         reasonPages.Add(new Menu
@@ -61,7 +61,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> RemoveCategory(this CenterHtmlMenu menu, string modulePath, string category)
+    public static async Task<bool> RemoveCategory(string modulePath, string category)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -85,7 +85,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> RemoveReason(this CenterHtmlMenu menu, string modulePath, string category, string command)
+    public static async Task<bool> RemoveReason(string modulePath, string category, string command)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -115,7 +115,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> AddReason(this CenterHtmlMenu menu, string modulePath, string category, string command)
+    public static async Task<bool> AddReason(string modulePath, string category, string command)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -145,7 +145,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> AddCommand(this CenterHtmlMenu menu, string modulePath, string category, params string[] commands)
+    public static async Task<bool> AddCommand(string modulePath, string category, params string[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
