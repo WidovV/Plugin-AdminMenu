@@ -27,7 +27,8 @@ public static class AdminMenuUtilities
         reasonPages.Add(new Menu
         {
             Category = category,
-            Commands = new string[0]
+            Commands = new string[0],
+            Flag = new string[0]
         });
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
@@ -55,12 +56,43 @@ public static class AdminMenuUtilities
         reasonPages.Add(new Menu
         {
             Category = category,
-            Commands = commands
+            Commands = commands,
+            Flag = new string[0]
         });
 
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
         return true;
     }
+
+    public static async Task<bool> AddCategory(string modulepath, string category, string[] command, params string[] flag)
+    {
+        if (string.IsNullOrEmpty(modulepath))
+        {
+            return false;
+        }
+
+        var (reasonPages, configPath) = await GetConfig(modulepath);
+        if (reasonPages == null)
+        {
+            return false;
+        }
+
+        if (reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
+        {
+            return await AddCommand(modulepath, category, command) && await AddFlag(modulepath, category, flag);
+        }
+
+        reasonPages.Add(new Menu
+        {
+            Category = category,
+            Commands = command,
+            Flag = flag
+        });
+
+        await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
+        return true;
+    }
+
 
     public static async Task<bool> RemoveCategory(string modulePath, string category)
     {
