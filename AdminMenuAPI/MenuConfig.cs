@@ -20,5 +20,6 @@ public class MenuConfig
 public class Menu
 {
     public string Category { get; set; }
+    public string Flag { get; set; }
     public string[] Commands { get; set; }
 }

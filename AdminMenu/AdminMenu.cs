@@ -19,7 +19,6 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
 
     public override void Load(bool hotReload)
     {
-
         // RegisterListener<Listeners.OnMapStart>(Listener_OnMapStart); // Commented out because i can't remember if i should use a list or dictionary for deserialize
         foreach (string command in Config.AdminMenuCommands)
         {
