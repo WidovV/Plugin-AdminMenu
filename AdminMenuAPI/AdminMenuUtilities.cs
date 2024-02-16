@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Linq;
+using System.Text.Json;
 using CounterStrikeSharp.API.Modules.Menu;
 
 namespace AdminMenuAPI;
@@ -145,10 +146,76 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> AddFlag(string modulepath, string category, string flag)
+    public static async Task<bool> AddFlag(string modulepath, string category, params string[] flag)
     {
+        if (string.IsNullOrEmpty(modulepath))
+        {
+            return false;
+        }
 
+        var (reasonPages, configPath) = await GetConfig(modulepath);
+        if (reasonPages == null)
+        {
+            return false;
+        }
+
+        if (!reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
+        {
+            return false;
+        }
+
+        var page = reasonPages.First(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        bool flagAdded = false;
+        foreach (var f in flag)
+        {
+            if (page.Flag.Contains(f, StringComparer.OrdinalIgnoreCase) || string.IsNullOrEmpty(f))
+            {
+                continue;
+            }
+
+            page.Flag = page.Flag.Append(f).ToArray();
+            flagAdded = true;
+        }
+
+        if (flagAdded)
+        {
+            await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
+
+        }
+
+        return flagAdded;
     }
+
+    public static async Task<bool> RemoveFlag(string modulepath, string category, string flag)
+    {
+        if (string.IsNullOrEmpty(modulepath))
+        {
+            return false;
+        }
+
+        var (reasonPages, configPath) = await GetConfig(modulepath);
+        if (reasonPages == null)
+        {
+            return false;
+        }
+
+        if (!reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
+        {
+            return false;
+        }
+
+        var page = reasonPages.First(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        if (!page.Flag.Contains(flag, StringComparer.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        page.Flag = page.Flag.Where(x => !string.Equals(x, flag, StringComparison.OrdinalIgnoreCase)).ToArray();
+
+        await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(reasonPages, new JsonSerializerOptions { WriteIndented = true }));
+        return true;
+    }
+
     public static async Task<bool> AddCommand(string modulePath, string category, params string[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
