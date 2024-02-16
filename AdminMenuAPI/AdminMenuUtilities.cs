@@ -5,7 +5,7 @@ namespace AdminMenuAPI;
 
 public static class AdminMenuUtilities
 {
-    public static async Task<bool> InsertCategory(this CenterHtmlMenu menu, string modulePath, string category)
+    public static async Task<bool> AddCategory(this CenterHtmlMenu menu, string modulePath, string category)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -48,7 +48,7 @@ public static class AdminMenuUtilities
 
         if (reasonPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
         {
-            return false;
+            return await AddCommand(menu, modulePath, category, commands);
         }
 
         reasonPages.Add(new Menu
@@ -145,7 +145,7 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    public static async Task<bool> AddReasons(this CenterHtmlMenu menu, string modulePath, string category, params string[] commands)
+    public static async Task<bool> AddCommand(this CenterHtmlMenu menu, string modulePath, string category, params string[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
