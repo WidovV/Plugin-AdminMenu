@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Configurations>Debug;Release;Build</Configurations>
+	  <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

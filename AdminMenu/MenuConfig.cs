@@ -4,33 +4,7 @@ namespace AdminMenu;
 
 public class MenuConfig : BasePluginConfig
 {
-    public Menu[] MenuItems { get; set; } = new[]
-    {
-        new Menu
-        {
-            Flag = new[]
-            {
-                "css/generic"
-            },
-            Category = "Player commands",
-            Commands = new[]
-            {
-                "css_kick"
-            }
-        },
-        new Menu
-        {
-            Flag = new[]
-            {
-                "css/generic"
-            },
-            Category = "Fun commands",
-            Commands = new[]
-            {
-                "css_slap",
-            }
-        }
-    };
+    public List<Menu> MenuItems { get; set; } = new List<Menu>();
 
     public string[] AdminMenuCommands { get; set; } = new[]
     {
@@ -47,5 +21,11 @@ public class Menu
 {
     public string Category { get; set; }
     public string[] Flag { get; set; }
-    public string[] Commands { get; set; }
+    public Command[] Commands { get; set; }
+}
+
+public class Command
+{
+    public string CommandName { get; set; }
+    public string[] Flag { get; set; }
 }

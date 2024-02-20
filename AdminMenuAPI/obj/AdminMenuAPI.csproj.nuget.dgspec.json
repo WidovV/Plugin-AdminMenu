@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "restore": {
         "projectUniqueName": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
         "projectName": "AdminMenuAPI",

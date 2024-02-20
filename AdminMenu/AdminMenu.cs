@@ -103,14 +103,14 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
     private void ShowCommandsMenu(CCSPlayerController player, Menu menu)
     {
         CenterHtmlMenu commandsMenu = new(menu.Category);
-        foreach (string command in menu.Commands)
+        foreach (Command command in menu.Commands)
         {
-            if (!AdminManager.PlayerHasPermissions(player, menu.Flag))
+            if (!AdminManager.PlayerHasPermissions(player, command.Flag))
             {
                 continue;
             }
 
-            commandsMenu.AddMenuOption(command, (_,_) => player.ExecuteClientCommand(command));
+            commandsMenu.AddMenuOption(command.CommandName, (_,_) => player.ExecuteClientCommand(command.CommandName));
         }
     }
 }

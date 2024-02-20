@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\adminmenuapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:adminmenuapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\adminmenuutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:adminmenuutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\menuconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:menuconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\filepathattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:filepathattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\adminmenuapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:adminmenuapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|c:\\github\\plugin-adminmenu\\adminmenuapi\\menuconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B94E9B7-3B6E-4F34-93A6-19100C4DD306}|AdminMenuAPI.csproj|solutionrelative:menuconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,20 +26,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MenuConfig.cs",
               "DocumentMoniker": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\MenuConfig.cs",
               "RelativeDocumentMoniker": "MenuConfig.cs",
               "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\MenuConfig.cs",
               "RelativeToolTip": "MenuConfig.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAABAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAcwAcAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-07T12:16:04.448Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FilePathAttribute.cs",
+              "DocumentMoniker": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\FilePathAttribute.cs",
+              "RelativeDocumentMoniker": "FilePathAttribute.cs",
+              "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\FilePathAttribute.cs",
+              "RelativeToolTip": "FilePathAttribute.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-20T08:33:58.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminMenuAPI",
+              "DocumentMoniker": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
+              "RelativeDocumentMoniker": "AdminMenuAPI.csproj",
+              "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
+              "RelativeToolTip": "AdminMenuAPI.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-02-20T07:37:16.813Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -47,25 +78,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminMenuAPI.csproj",
-              "DocumentMoniker": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
-              "RelativeDocumentMoniker": "AdminMenuAPI.csproj",
-              "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
-              "RelativeToolTip": "AdminMenuAPI.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-02-20T07:37:16.813Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AdminMenuUtilities.cs",
               "DocumentMoniker": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuUtilities.cs",
               "RelativeDocumentMoniker": "AdminMenuUtilities.cs",
               "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuUtilities.cs",
               "RelativeToolTip": "AdminMenuUtilities.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAqwBkAAAAJAAAA",
+              "ViewState": "AQIAAC4BAAAAAAAAAAAQwDoBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-07T07:38:47.957Z",
               "EditorCaption": ""
