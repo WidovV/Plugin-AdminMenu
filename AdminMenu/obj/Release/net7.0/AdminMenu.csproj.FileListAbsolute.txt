@@ -1,0 +1,6 @@
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.csproj.AssemblyReference.cache
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.GeneratedMSBuildEditorConfig.editorconfig
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.AssemblyInfoInputs.cache
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.AssemblyInfo.cs
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.csproj.CoreCompileInputs.cache
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.sourcelink.json

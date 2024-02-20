@@ -8,7 +8,10 @@ public class MenuConfig : BasePluginConfig
     {
         new Menu
         {
-            Flag = ["css/generic"],
+            Flag = new[]
+            {
+                "css/generic"
+            },
             Category = "Player commands",
             Commands = new[]
             {
@@ -17,7 +20,10 @@ public class MenuConfig : BasePluginConfig
         },
         new Menu
         {
-            Flag = ["css/generic"],
+            Flag = new[]
+            {
+                "css/generic"
+            },
             Category = "Fun commands",
             Commands = new[]
             {
