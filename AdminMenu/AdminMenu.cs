@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Admin;
@@ -13,6 +14,7 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
     public override string ModuleVersion => "0.1";
     public override string ModuleAuthor => "WidovV";
     public MenuConfig Config { get; set; }
+    private string _configPath;
 
     public void OnConfigParsed(MenuConfig config)
     {
@@ -27,6 +29,22 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         }
 
         RegisterListener<Listeners.OnMapStart>(Listener_OnMapStart);
+        _configPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(ModulePath).FullName).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
+        Task.Run(async () => await FixConfig());
+    }
+
+    private async Task FixConfig()
+    {
+        string[] lines = await File.ReadAllLinesAsync(_configPath);
+        if (!lines[0].Contains('/'))
+        {
+            return;
+        }
+
+        lines = lines[1..];
+        MenuConfig config = JsonSerializer.Deserialize<MenuConfig>(string.Join('\n', lines));
+        
+        await File.WriteAllTextAsync(_configPath, JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true }));
     }
 
     private void Listener_OnMapStart(string mapName)
@@ -38,7 +56,7 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
     {
         Task.Run(() =>
         {
-            using Stream stream = File.OpenRead(Path.Combine(Directory.GetParent(Directory.GetParent(ModulePath).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json"));
+            using Stream stream = File.OpenRead(Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(ModulePath).FullName).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json"));
             Config = JsonSerializer.Deserialize<MenuConfig>(stream);
         });
     }

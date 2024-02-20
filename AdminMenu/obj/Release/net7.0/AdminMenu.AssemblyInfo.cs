@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdminMenu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6dbef3f04c39437fcc3510d66ab183c5d406451a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0971b7f40a7423ab8d1b5fd9e27a4625e75436e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdminMenu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdminMenu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
