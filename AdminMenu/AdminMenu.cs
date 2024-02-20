@@ -1,4 +1,6 @@
-﻿using CounterStrikeSharp.API.Core;
+﻿using System.Text.Json;
+using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Menu;
@@ -19,11 +21,40 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
 
     public override void Load(bool hotReload)
     {
-        // RegisterListener<Listeners.OnMapStart>(Listener_OnMapStart); // Commented out because i can't remember if i should use a list or dictionary for deserialize
         foreach (string command in Config.AdminMenuCommands)
         {
             AddCommand(command, "Open admin menu", AdminMenuCommand);
         }
+
+        RegisterListener<Listeners.OnMapStart>(Listener_OnMapStart);
+    }
+
+    private void Listener_OnMapStart(string mapName)
+    {
+        GetConfig();
+    }
+
+    private void GetConfig()
+    {
+        Task.Run(() =>
+        {
+            using Stream stream = File.OpenRead(Path.Combine(Directory.GetParent(Directory.GetParent(ModulePath).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json"));
+            Config = JsonSerializer.Deserialize<MenuConfig>(stream);
+        });
+    }
+
+    [ConsoleCommand("css_reloadadminmenu")]
+    [RequiresPermissions("css/root")]
+    public void ReloadAdminMenuCommand(CCSPlayerController player, CommandInfo info)
+    {
+        GetConfig();
+        if (player == null || !player.IsValid)
+        {
+            Console.WriteLine("Admin menu reloaded");
+            return;
+        }
+
+        player.PrintToChat("Admin menu reloaded");
     }
 
     [RequiresPermissions($"css/generic")]
@@ -32,11 +63,6 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         if (player == null || !player.IsValid || player.IsBot)
         {
             return;
-        }
-
-        if (info.ArgCount > 1)
-        {
-            player.PrintToChat("Invalid usage of the command. Usage: css_adminmenu");
         }
 
         ShowCategoriesMenu(player);
