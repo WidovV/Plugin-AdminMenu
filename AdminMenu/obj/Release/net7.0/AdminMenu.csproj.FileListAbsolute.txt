@@ -4,3 +4,10 @@ C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.AssemblyInfoIn
 C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.AssemblyInfo.cs
 C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.csproj.CoreCompileInputs.cache
 C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.sourcelink.json
+C:\github\Plugin-AdminMenu\AdminMenu\bin\Release\net7.0\AdminMenu.deps.json
+C:\github\Plugin-AdminMenu\AdminMenu\bin\Release\net7.0\AdminMenu.dll
+C:\github\Plugin-AdminMenu\AdminMenu\bin\Release\net7.0\AdminMenu.pdb
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.dll
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\refint\AdminMenu.dll
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\AdminMenu.pdb
+C:\github\Plugin-AdminMenu\AdminMenu\obj\Release\net7.0\ref\AdminMenu.dll
