@@ -91,7 +91,7 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         CenterHtmlMenu menu = new("Admin menu");
         foreach (Menu category in Config.MenuItems)
         {
-            if (!AdminManager.PlayerHasPermissions(player, category.Flag))
+            if (category.Flag != null && category.Flag.Length > 0 && !AdminManager.PlayerHasPermissions(player, category.Flag))
             {
                 continue;
             }
@@ -107,12 +107,12 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         CenterHtmlMenu commandsMenu = new(menu.Category);
         foreach (Command command in menu.Commands)
         {
-            if (!AdminManager.PlayerHasPermissions(player, command.Flag))
+            if (command.Flag != null && command.Flag.Length > 0 && !AdminManager.PlayerHasPermissions(player, command.Flag))
             {
                 continue;
             }
 
-            commandsMenu.AddMenuOption(command.CommandName, (_,_) => player.ExecuteClientCommand(command.CommandName));
+            commandsMenu.AddMenuOption(command.CommandName.Replace("css_", string.Empty), (_,_) => player.ExecuteClientCommand(command.CommandName));
         }
 
         MenuManager.OpenCenterHtmlMenu(this, player, commandsMenu);
