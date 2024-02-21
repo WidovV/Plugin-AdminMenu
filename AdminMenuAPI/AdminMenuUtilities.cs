@@ -45,7 +45,7 @@ public static class AdminMenuUtilities
             Flag = category.CategoryFlags // Consider adding a flags parameter to this method if you want to set flags when adding a category
         });
 
-        await UpdateConfig(menuItem, configPath, categoryPages);
+        await AdminMenuHelper.UpdateConfig(menuItem, configPath, categoryPages);
         return true;
     }
 
@@ -85,17 +85,13 @@ public static class AdminMenuUtilities
         if (commandAdded)
         {
             categoryPages = categoryPages.Select(x => x.Category == category.CategoryName ? page : x).ToList();
-            await UpdateConfig(menuItem, configPath, categoryPages);
+            await AdminMenuHelper.UpdateConfig(menuItem, configPath, categoryPages);
         }
 
         return commandAdded;
     }
 
-    private static async Task UpdateConfig(MenuConfig menuItem, string configPath, List<Menu> categoryPages)
-    {
-        menuItem.MenuItems = categoryPages;
-        await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(menuItem, new JsonSerializerOptions { WriteIndented = true }));
-    }
+
 
     public static async Task<bool> RemoveCategory(string modulePath, CategoryNameAttribute category)
     {
@@ -124,7 +120,7 @@ public static class AdminMenuUtilities
 
         categoryPages.RemoveAll(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase));
 
-        await UpdateConfig(menuItem, configPath, categoryPages);
+        await AdminMenuHelper.UpdateConfig(menuItem, configPath, categoryPages);
         return true;
     }
 
@@ -154,7 +150,7 @@ public static class AdminMenuUtilities
         page.Commands = page.Commands.Where(c => !(c.CommandName.Equals(command, StringComparison.OrdinalIgnoreCase) && c.Flag.SequenceEqual(flags))).ToArray();
 
         categoryPages = categoryPages.Select(x => x.Category == category.CategoryName ? page : x).ToList();
-        await UpdateConfig(menuItem, configPath, categoryPages);
+        await AdminMenuHelper.UpdateConfig(menuItem, configPath, categoryPages);
         return true;
     }
 
@@ -196,7 +192,7 @@ public static class AdminMenuUtilities
         if (flagAdded)
         {
             categoryPages = categoryPages.Select(x => x.Category == category.CategoryName ? page : x).ToList();
-            await UpdateConfig(menuItem, configPath, categoryPages);
+            await AdminMenuHelper.UpdateConfig(menuItem, configPath, categoryPages);
         }
 
         return flagAdded;
@@ -244,7 +240,7 @@ public static class AdminMenuUtilities
 
         if (flagAdded)
         {
-            await UpdateConfig(menuItem, configPath, categoryPages);
+            await AdminMenuHelper.UpdateConfig(menuItem, configPath, categoryPages);
         }
 
         return flagAdded;
@@ -280,27 +276,9 @@ public static class AdminMenuUtilities
 
         command.Flag = command.Flag.Where(x => !string.Equals(x, flag, StringComparison.OrdinalIgnoreCase)).ToArray();
 
-        await UpdateConfig(menuItem, configPath, categoryPages);
+        await AdminMenuHelper.UpdateConfig(menuItem, configPath, categoryPages);
         return true;
     }
-
-    private static async Task<(MenuConfig menu, string path)> GetConfig(string modulePath)
-    {
-        // Get the path to the AdminMenu.json file
-        string configPath = GetConfigPath(modulePath);
-
-        try
-        {
-            return (JsonSerializer.Deserialize<MenuConfig>(await File.ReadAllTextAsync(configPath)), configPath);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex);
-            throw;
-        }
-    }
-
-    private static string GetConfigPath(string modulePath) => Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(modulePath).FullName).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
 
     public static async Task<bool> RegisterAdminCategories(string modulePath, params Type[] classtype)
     {
@@ -323,7 +301,7 @@ public static class AdminMenuUtilities
                 foreach (MethodInfo method in type.GetMethods())
                 {
                     // Only add first attribute from the method that is a ConsoleCommandAttribute
-                    string commandName = GetCommandName(method);
+                    string commandName = AdminMenuHelper.GetCommandName(method);
 
                     // If the command name is null or empty, skip the method
                     if (string.IsNullOrEmpty(commandName))
@@ -331,9 +309,9 @@ public static class AdminMenuUtilities
                         continue;
                     }
 
-                    CategoryNameAttribute categoryName = GetCategoryName(method) ?? new CategoryNameAttribute("Other");
+                    CategoryNameAttribute categoryName = AdminMenuHelper.GetCategoryName(method) ?? new CategoryNameAttribute("Other");
 
-                    HashSet<string> permissions = GetPermissions(method);
+                    HashSet<string> permissions = AdminMenuHelper.GetPermissions(method);
 
                     Command command = new() { CommandName = commandName, Flag = permissions?.ToArray() };
 
@@ -359,54 +337,19 @@ public static class AdminMenuUtilities
         return true;
     }
 
-    private static string GetCommandName(MethodInfo method)
+    private static async Task<(MenuConfig menu, string path)> GetConfig(string modulePath)
     {
-        // Get the first attribute from the method that is a ConsoleCommandAttribute
-        object? attribute = method.GetCustomAttributes(typeof(ConsoleCommandAttribute), false).FirstOrDefault();
+        // Get the path to the AdminMenu.json file
+        string configPath = AdminMenuHelper.GetConfigPath(modulePath);
 
-        // If the attribute is null, return null
-        if (attribute == null)
+        try
         {
-            return null;
+            return (JsonSerializer.Deserialize<MenuConfig>(await File.ReadAllTextAsync(configPath)), configPath);
         }
-
-        // Get the command name from the attribute
-        string commandName = attribute switch
+        catch (Exception ex)
         {
-            ConsoleCommandAttribute cca => cca.Command,
-            _ => null
-        };
-
-        // Return the command name or null
-        return commandName;
-    }
-
-    private static CategoryNameAttribute GetCategoryName(MethodInfo method)
-    {
-        object? attribute = method.GetCustomAttribute(typeof(CategoryNameAttribute), false);
-
-        if (attribute == null)
-        {
-            return null;
+            Console.WriteLine(ex);
+            throw;
         }
-
-        CategoryNameAttribute? categoryName = attribute as CategoryNameAttribute;
-
-        return categoryName;
-    }
-
-    private static HashSet<string> GetPermissions(MethodInfo method)
-    {
-        // Get the first attribute from the method that is a RequiresPermissions or RequiresPermissionsOr attribute
-        object? permissionAttribute = method.GetCustomAttribute(typeof(RequiresPermissions), false) ?? method.GetCustomAttribute(typeof(RequiresPermissionsOr), false);
-
-        HashSet<string> permissions = permissionAttribute switch
-        {
-            RequiresPermissions rp => rp.Permissions,
-            RequiresPermissionsOr rpo => rpo.Permissions,
-            _ => null
-        };
-
-        return permissions;
     }
 }
