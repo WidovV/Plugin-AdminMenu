@@ -31,6 +31,6 @@ public class Menu
 
 public class Command
 {
-    public string CommandName { get; set; }
-    public string[] Flag { get; set; }
+    public string? CommandName { get; set; }
+    public string?[]? Flag { get; set; }
 }

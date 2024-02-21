@@ -16,10 +16,10 @@ public static class AdminMenuUtilities
 
         var (menuItem, configPath) = await GetConfig(modulePath);
 
-        if (menuItem == null)
+        menuItem ??= new MenuConfig
         {
-            return false;
-        }
+            MenuItems = new List<Menu>()
+        };
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
@@ -47,10 +47,12 @@ public static class AdminMenuUtilities
         }
 
         var (menuItem, configPath) = await GetConfig(modulePath);
-        if (menuItem == null)
+
+        menuItem ??= new MenuConfig
         {
-            return false;
-        }
+            MenuItems = new List<Menu>()
+        };
+
         List<Menu> categoryPages = menuItem.MenuItems;
 
         Menu? page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
@@ -60,17 +62,23 @@ public static class AdminMenuUtilities
         }
 
         // Check for existing commands with the same name and avoid adding duplicates
+        bool commandAdded = false;
         foreach (Command command in commands)
         {
             if (!page.Commands.Any(c => c.CommandName.Equals(command.CommandName, StringComparison.OrdinalIgnoreCase)))
             {
                 page.Commands = page.Commands.Concat(new[] { command }).ToArray();
+                commandAdded = true;
             }
         }
 
-        categoryPages = categoryPages.Select(x => x.Category == category ? page : x).ToList();
-        await UpdateConfig(menuItem, configPath, categoryPages);
-        return true;
+        if (commandAdded)
+        {
+            categoryPages = categoryPages.Select(x => x.Category == category ? page : x).ToList();
+            await UpdateConfig(menuItem, configPath, categoryPages);
+        }
+
+        return commandAdded;
     }
 
     private static async Task UpdateConfig(MenuConfig menuItem, string configPath, List<Menu> categoryPages)
@@ -88,10 +96,10 @@ public static class AdminMenuUtilities
 
         var (menuItem, configPath) = await GetConfig(modulePath);
 
-        if (menuItem == null)
+        menuItem ??= new MenuConfig
         {
-            return false;
-        }
+            MenuItems = new List<Menu>()
+        };
 
         List<Menu> categoryPages = menuItem.MenuItems;
         if (categoryPages == null)
@@ -119,10 +127,10 @@ public static class AdminMenuUtilities
 
         var (menuItem, configPath) = await GetConfig(modulePath);
 
-        if (menuItem == null)
+        menuItem ??= new MenuConfig
         {
-            return false;
-        }
+            MenuItems = new List<Menu>()
+        };
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
@@ -147,10 +155,11 @@ public static class AdminMenuUtilities
         }
 
         var (menuItem, configPath) = await GetConfig(modulepath);
-        if (menuItem == null)
+
+        menuItem ??= new MenuConfig
         {
-            return false;
-        }
+            MenuItems = new List<Menu>()
+        };
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
@@ -194,10 +203,11 @@ public static class AdminMenuUtilities
         }
 
         var (menuItem, configPath) = await GetConfig(modulepath);
-        if (menuItem == null)
+
+        menuItem ??= new MenuConfig
         {
-            return false;
-        }
+            MenuItems = new List<Menu>()
+        };
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
@@ -224,8 +234,15 @@ public static class AdminMenuUtilities
         // Get the path to the AdminMenu.json file
         string configPath = GetConfigPath(modulePath);
 
-        // Deserialize the AdminMenu.json file
-        return (JsonSerializer.Deserialize<MenuConfig>(await File.ReadAllTextAsync(configPath)), configPath);
+        try
+        {
+            return (JsonSerializer.Deserialize<MenuConfig>(await File.ReadAllTextAsync(configPath)), configPath);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            throw;
+        }
     }
 
     private static string GetConfigPath(string modulePath) => Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(modulePath).FullName).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
@@ -242,48 +259,53 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        modulePath = GetConfigPath(modulePath);
-
-        // Get the type of the class
-        foreach (Type type in classtype)
+        try
         {
-            // Foreach each method in the class
-            foreach (MethodInfo method in type.GetMethods())
+            // Get the type of the class
+            foreach (Type type in classtype)
             {
-                // Only add first attribute from the method that is a ConsoleCommandAttribute
-                string commandName = GetCommandName(method);
-
-                // If the command name is null or empty, skip the method
-                if (string.IsNullOrEmpty(commandName))
+                // Foreach each method in the class
+                foreach (MethodInfo method in type.GetMethods())
                 {
-                    continue;
+                    // Only add first attribute from the method that is a ConsoleCommandAttribute
+                    string commandName = GetCommandName(method);
+
+                    // If the command name is null or empty, skip the method
+                    if (string.IsNullOrEmpty(commandName))
+                    {
+                        continue;
+                    }
+
+                    string categoryName = GetCategoryName(method);
+
+                    if (string.IsNullOrEmpty(categoryName))
+                    {
+                        categoryName = "Other";
+                    }
+
+                    HashSet<string> permissions = GetPermissions(method);
+
+                    Command command = new() { CommandName = commandName, Flag = permissions?.ToArray() };
+
+                    if (permissions != null && permissions.Count > 0)
+                    {
+                        Console.WriteLine($"Adding command {commandName} to category {categoryName} with permissions {string.Join(", ", permissions)}");
+                        bool added = await AddCategory(modulePath, categoryName, command);
+                        Console.WriteLine($"Added: {added}");
+                        continue;
+                    }
+
+                    Console.WriteLine($"Adding command {commandName} to category {categoryName}");
+                    bool value = await AddCategory(modulePath, categoryName, command);
+                    Console.WriteLine($"Added: {value}");
                 }
-
-                string categoryName = GetCategoryName(method);
-
-                if (string.IsNullOrEmpty(categoryName))
-                {
-                    categoryName = "Other";
-                }
-
-                HashSet<string> permissions = GetPermissions(method);
-
-                Command command = new() { CommandName = commandName, Flag = permissions.ToArray() };
-
-                if (permissions != null && permissions.Count > 0)
-                {
-                    Console.WriteLine($"Adding command {commandName} to category {categoryName} with permissions {string.Join(", ", permissions)}");
-                    bool added = await AddCategory(modulePath, category: categoryName, command);
-                    Console.WriteLine($"Added: {added}");
-                    continue;
-                }
-
-                Console.WriteLine($"Adding command {commandName} to category {categoryName}");
-                bool value = await AddCategory(modulePath, categoryName, command);
-                Console.WriteLine($"Added: {value}");
             }
         }
-
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            throw;
+        }
         return true;
     }
 
