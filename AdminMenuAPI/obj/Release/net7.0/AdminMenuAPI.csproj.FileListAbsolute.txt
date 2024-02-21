@@ -11,3 +11,16 @@ C:\github\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.dll
 C:\github\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\refint\AdminMenuAPI.dll
 C:\github\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.pdb
 C:\github\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\ref\AdminMenuAPI.dll
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\bin\Release\net7.0\AdminMenuAPI.deps.json
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\bin\Release\net7.0\AdminMenuAPI.dll
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\bin\Release\net7.0\AdminMenuAPI.pdb
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.csproj.AssemblyReference.cache
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.GeneratedMSBuildEditorConfig.editorconfig
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.AssemblyInfoInputs.cache
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.AssemblyInfo.cs
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.csproj.CoreCompileInputs.cache
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.sourcelink.json
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.dll
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\refint\AdminMenuAPI.dll
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\AdminMenuAPI.pdb
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenuAPI\obj\Release\net7.0\ref\AdminMenuAPI.dll

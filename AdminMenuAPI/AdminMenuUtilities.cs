@@ -7,7 +7,7 @@ namespace AdminMenuAPI;
 
 public static class AdminMenuUtilities
 {
-    public static async Task<bool> AddCategory(string modulePath, string category, params Command[] commands)
+    public static async Task<bool> AddCategory(string modulePath, CategoryNameAttribute category, params Command[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -23,23 +23,33 @@ public static class AdminMenuUtilities
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
-        if (categoryPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
+        if (categoryPages == null)
         {
-            return await AddCommand(modulePath, category, commands);
+            return false;
+        }
+
+        if (categoryPages.Any(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase)))
+        {
+            return await AddFlagToCategory(modulePath, category) && await AddCommand(modulePath, category, commands);
+        }
+
+        if (category.CategoryFlags == null)
+        {
+            category.CategoryFlags = Array.Empty<string>();
         }
 
         categoryPages.Add(new Menu
         {
-            Category = category,
+            Category = category.CategoryName,
             Commands = commands,
-            Flag = new string[0] // Consider adding a flags parameter to this method if you want to set flags when adding a category
+            Flag = category.CategoryFlags // Consider adding a flags parameter to this method if you want to set flags when adding a category
         });
 
         await UpdateConfig(menuItem, configPath, categoryPages);
         return true;
     }
 
-    public static async Task<bool> AddCommand(string modulePath, string category, params Command[] commands)
+    public static async Task<bool> AddCommand(string modulePath, CategoryNameAttribute category, params Command[] commands)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -55,7 +65,7 @@ public static class AdminMenuUtilities
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
-        Menu? page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        Menu? page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase));
         if (page == null)
         {
             return false;
@@ -74,7 +84,7 @@ public static class AdminMenuUtilities
 
         if (commandAdded)
         {
-            categoryPages = categoryPages.Select(x => x.Category == category ? page : x).ToList();
+            categoryPages = categoryPages.Select(x => x.Category == category.CategoryName ? page : x).ToList();
             await UpdateConfig(menuItem, configPath, categoryPages);
         }
 
@@ -87,7 +97,7 @@ public static class AdminMenuUtilities
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(menuItem, new JsonSerializerOptions { WriteIndented = true }));
     }
 
-    public static async Task<bool> RemoveCategory(string modulePath, string category)
+    public static async Task<bool> RemoveCategory(string modulePath, CategoryNameAttribute category)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -107,18 +117,18 @@ public static class AdminMenuUtilities
             return false;
         }
 
-        if (!categoryPages.Any(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase)))
+        if (!categoryPages.Any(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase)))
         {
             return false;
         }
 
-        categoryPages.RemoveAll(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        categoryPages.RemoveAll(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase));
 
         await UpdateConfig(menuItem, configPath, categoryPages);
         return true;
     }
 
-    public static async Task<bool> RemoveCommand(string modulePath, string category, string command, string[] flags)
+    public static async Task<bool> RemoveCommand(string modulePath, CategoryNameAttribute category, string command, string[] flags)
     {
         if (string.IsNullOrEmpty(modulePath))
         {
@@ -134,7 +144,7 @@ public static class AdminMenuUtilities
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
-        var page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        var page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase));
         if (page == null)
         {
             return false;
@@ -143,18 +153,19 @@ public static class AdminMenuUtilities
         // Identify the exact command to remove based on its name and flags
         page.Commands = page.Commands.Where(c => !(c.CommandName.Equals(command, StringComparison.OrdinalIgnoreCase) && c.Flag.SequenceEqual(flags))).ToArray();
 
+        categoryPages = categoryPages.Select(x => x.Category == category.CategoryName ? page : x).ToList();
         await UpdateConfig(menuItem, configPath, categoryPages);
         return true;
     }
 
-    public static async Task<bool> AddFlag(string modulepath, string category, string commandName, params string[] flag)
+    public static async Task<bool> AddFlagToCategory(string modulePath, CategoryNameAttribute category)
     {
-        if (string.IsNullOrEmpty(modulepath))
+        if (string.IsNullOrEmpty(modulePath))
         {
             return false;
         }
 
-        var (menuItem, configPath) = await GetConfig(modulepath);
+        var (menuItem, configPath) = await GetConfig(modulePath);
 
         menuItem ??= new MenuConfig
         {
@@ -163,7 +174,51 @@ public static class AdminMenuUtilities
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
-        var page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        if (categoryPages.Any(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase)))
+        {
+            return false;
+        }
+
+        Menu page = categoryPages.First(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase));
+
+        bool flagAdded = false;
+        foreach (var f in category.CategoryFlags)
+        {
+            if (page.Flag.Contains(f, StringComparer.OrdinalIgnoreCase) || string.IsNullOrEmpty(f))
+            {
+                continue;
+            }
+
+            page.Flag = page.Flag.Append(f).ToArray();
+            flagAdded = true;
+        }
+
+        if (flagAdded)
+        {
+            categoryPages = categoryPages.Select(x => x.Category == category.CategoryName ? page : x).ToList();
+            await UpdateConfig(menuItem, configPath, categoryPages);
+        }
+
+        return flagAdded;
+    }
+
+    public static async Task<bool> AddFlagToCommand(string modulePath, CategoryNameAttribute category, string commandName, params string[] flag)
+    {
+        if (string.IsNullOrEmpty(modulePath))
+        {
+            return false;
+        }
+
+        var (menuItem, configPath) = await GetConfig(modulePath);
+
+        menuItem ??= new MenuConfig
+        {
+            MenuItems = new List<Menu>()
+        };
+
+        List<Menu> categoryPages = menuItem.MenuItems;
+
+        var page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase));
         if (page == null)
         {
             return false;
@@ -195,7 +250,7 @@ public static class AdminMenuUtilities
         return flagAdded;
     }
 
-    public static async Task<bool> RemoveFlag(string modulepath, string category, string commandName, string flag)
+    public static async Task<bool> RemoveFlag(string modulepath, CategoryNameAttribute category, string commandName, string flag)
     {
         if (string.IsNullOrEmpty(modulepath))
         {
@@ -211,7 +266,7 @@ public static class AdminMenuUtilities
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
-        var page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+        var page = categoryPages.FirstOrDefault(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase));
         if (page == null)
         {
             return false;
@@ -276,12 +331,7 @@ public static class AdminMenuUtilities
                         continue;
                     }
 
-                    string categoryName = GetCategoryName(method);
-
-                    if (string.IsNullOrEmpty(categoryName))
-                    {
-                        categoryName = "Other";
-                    }
+                    CategoryNameAttribute categoryName = GetCategoryName(method) ?? new CategoryNameAttribute("Other");
 
                     HashSet<string> permissions = GetPermissions(method);
 
@@ -331,15 +381,16 @@ public static class AdminMenuUtilities
         return commandName;
     }
 
-    private static string GetCategoryName(MethodInfo method)
+    private static CategoryNameAttribute GetCategoryName(MethodInfo method)
     {
         object? attribute = method.GetCustomAttribute(typeof(CategoryNameAttribute), false);
 
-        string categoryName = attribute switch
+        if (attribute == null)
         {
-            CategoryNameAttribute cna => cna.CategoryName,
-            _ => null
-        };
+            return null;
+        }
+
+        CategoryNameAttribute? categoryName = attribute as CategoryNameAttribute;
 
         return categoryName;
     }
