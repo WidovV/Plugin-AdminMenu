@@ -1,17 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using System.Text.Json;
-using System.Threading.Tasks;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Admin;
 
 namespace AdminMenuAPI;
 
-internal class AdminMenuHelper
+public partial class AdminMenuHelper
 {
+    internal static async Task<(MenuConfig menu, string path)> GetConfig(string modulePath)
+    {
+        // Get the path to the AdminMenu.json file
+        string configPath = AdminMenuHelper.GetConfigPath(modulePath);
+
+        try
+        {
+            return (JsonSerializer.Deserialize<MenuConfig>(await File.ReadAllTextAsync(configPath)), configPath);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            throw;
+        }
+    }
     internal static async Task UpdateConfig(MenuConfig menuItem, string configPath, List<Menu> categoryPages)
     {
         menuItem.MenuItems = categoryPages;
