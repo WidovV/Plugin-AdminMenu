@@ -98,6 +98,8 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
 
             menu.AddMenuOption(category.Category, (_, _) => ShowCommandsMenu(player, category));
         }
+
+        MenuManager.OpenCenterHtmlMenu(this, player, menu);
     }
 
     private void ShowCommandsMenu(CCSPlayerController player, Menu menu)
@@ -112,5 +114,7 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
 
             commandsMenu.AddMenuOption(command.CommandName, (_,_) => player.ExecuteClientCommand(command.CommandName));
         }
+
+        MenuManager.OpenCenterHtmlMenu(this, player, commandsMenu);
     }
 }
