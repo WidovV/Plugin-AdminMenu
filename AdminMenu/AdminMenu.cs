@@ -4,6 +4,7 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Cvars;
 using CounterStrikeSharp.API.Modules.Menu;
 
 namespace AdminMenu;
@@ -27,7 +28,7 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         {
             AddCommand(command, "Open admin menu", AdminMenuCommand);
         }
-
+         
         RegisterListener<Listeners.OnMapStart>(Listener_OnMapStart);
         _configPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(ModulePath).FullName).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
         Task.Run(async () => await FixConfig());
@@ -111,8 +112,7 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
             {
                 continue;
             }
-
-            commandsMenu.AddMenuOption(command.CommandName.Replace("css_", string.Empty), (_,_) => player.ExecuteClientCommand(command.CommandName));
+            commandsMenu.AddMenuOption(command.CommandName.Replace("css_", string.Empty), (_, _) => player.ExecuteClientCommandFromServer(command.CommandName));
         }
 
         MenuManager.OpenCenterHtmlMenu(this, player, commandsMenu);

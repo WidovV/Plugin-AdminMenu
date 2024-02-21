@@ -8,13 +8,13 @@
     ".NETCoreApp,Version=v7.0": {
       "AdminMenu/1.0.0": {
         "dependencies": {
-          "CounterStrikeSharp.API": "1.0.160"
+          "CounterStrikeSharp.API": "1.0.168"
         },
         "runtime": {
           "AdminMenu.dll": {}
         }
       },
-      "CounterStrikeSharp.API/1.0.160": {
+      "CounterStrikeSharp.API/1.0.168": {
         "dependencies": {
           "McMaster.NETCore.Plugins": "1.4.0",
           "Microsoft.CSharp": "4.7.0",
@@ -31,8 +31,8 @@
         },
         "runtime": {
           "lib/net7.0/CounterStrikeSharp.API.dll": {
-            "assemblyVersion": "1.0.160.0",
-            "fileVersion": "1.0.160.0"
+            "assemblyVersion": "1.0.168.0",
+            "fileVersion": "1.0.168.0"
           }
         }
       },
@@ -507,12 +507,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "CounterStrikeSharp.API/1.0.160": {
+    "CounterStrikeSharp.API/1.0.168": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-VPhITAQhzPW/Ld5OStaZe71qf9fwi5xWr9FrakD+QrwSUl3LhuQ9kalikzij0a6XNv6wQWtghNzgulz7WjYr+Q==",
-      "path": "counterstrikesharp.api/1.0.160",
-      "hashPath": "counterstrikesharp.api.1.0.160.nupkg.sha512"
+      "sha512": "sha512-n5rbHM1KDsLyHt+Tdi1Q4H3Ez/CyEykzMA7iILeUB7CT4uwFgPsW+iZ3YWj7MRhaYZMJqcmUD8ihrRNuc36EFg==",
+      "path": "counterstrikesharp.api/1.0.168",
+      "hashPath": "counterstrikesharp.api.1.0.168.nupkg.sha512"
     },
     "McMaster.NETCore.Plugins/1.4.0": {
       "type": "package",
