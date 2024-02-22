@@ -45,15 +45,21 @@ public partial class AdminMenuUtilities
 
                     if (permissions != null && permissions.Count > 0)
                     {
-                        Console.WriteLine($"Adding command {commandName} to category {categoryName.CategoryName} with permissions {string.Join(", ", permissions)}");
+
                         bool added = await AddCategory(modulePath, categoryName, command);
-                        Console.WriteLine($"Added: {added}");
+                        if (added)
+                        {
+                            Console.WriteLine($"Added command {commandName} to category {categoryName.CategoryName} with permissions {string.Join(", ", permissions)}");
+                        }
                         continue;
                     }
 
-                    Console.WriteLine($"Adding command {commandName} to category {categoryName.CategoryName}");
+                    
                     bool value = await AddCategory(modulePath, categoryName, command);
-                    Console.WriteLine($"Added: {value}");
+                    if (value)
+                    {
+                        Console.WriteLine($"Adding command {commandName} to category {categoryName.CategoryName}");
+                    }
                 }
             }
         }

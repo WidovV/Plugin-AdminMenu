@@ -46,8 +46,15 @@
               "ViewState": "AQIAAAgAAAAAAAAAAAD4vxoAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-07T12:16:04.448Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
             },
             {
               "$type": "Document",
@@ -59,8 +66,7 @@
               "RelativeToolTip": "AdminMenuHelper.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T09:46:49.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-02-22T09:46:49.022Z"
             },
             {
               "$type": "Document",
@@ -72,16 +78,7 @@
               "RelativeToolTip": "AdminMenuUtilitiesAdd.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAAACMAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T09:33:51.221Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+              "WhenOpened": "2024-02-22T09:33:51.221Z"
             },
             {
               "$type": "Document",
@@ -113,7 +110,7 @@
               "RelativeDocumentMoniker": "AdminMenuUtilities.cs",
               "ToolTip": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuUtilities.cs",
               "RelativeToolTip": "AdminMenuUtilities.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAwwBwAAAAxAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAwwDQAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-07T07:38:47.957Z",
               "EditorCaption": ""
