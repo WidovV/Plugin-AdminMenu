@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdminMenuAPI;
+﻿namespace AdminMenuAPI;
 
 public partial class AdminMenuUtilities
 {
-    public static async Task<bool> AddCommand(string modulePath, CategoryNameAttribute category, params Command[] commands)
+    public static async Task<bool> AddCommandToCategory(string modulePath, CategoryNameAttribute category, params Command[] commands)
     {
+
         if (string.IsNullOrEmpty(modulePath))
         {
             return false;
@@ -66,14 +61,11 @@ public partial class AdminMenuUtilities
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
-        if (categoryPages == null)
-        {
-            return false;
-        }
-
         if (categoryPages.Any(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase)))
         {
-            return await AddFlagToCategory(modulePath, category) && await AddCommand(modulePath, category, commands);
+            bool commandAdded = await AddCommandToCategory(modulePath, category, commands);
+            bool flagAdded = await AddFlagToCategory(modulePath, category);
+            return commandAdded || flagAdded;
         }
 
         category.CategoryFlags ??= Array.Empty<string>();
@@ -104,7 +96,7 @@ public partial class AdminMenuUtilities
 
         List<Menu> categoryPages = menuItem.MenuItems;
 
-        if (categoryPages.Any(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase)))
+        if (!categoryPages.Any(x => string.Equals(x.Category, category.CategoryName, StringComparison.OrdinalIgnoreCase)))
         {
             return false;
         }
