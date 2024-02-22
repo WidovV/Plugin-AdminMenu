@@ -57,7 +57,7 @@ public partial class AdminMenuUtilities
             return false;
         }
 
-        var (menuItem, configPath) = await GetConfig(modulePath);
+        var (menuItem, configPath) = await AdminMenuHelper.GetConfig(modulePath);
 
         menuItem ??= new MenuConfig
         {
@@ -76,10 +76,7 @@ public partial class AdminMenuUtilities
             return await AddFlagToCategory(modulePath, category) && await AddCommand(modulePath, category, commands);
         }
 
-        if (category.CategoryFlags == null)
-        {
-            category.CategoryFlags = Array.Empty<string>();
-        }
+        category.CategoryFlags ??= Array.Empty<string>();
 
         categoryPages.Add(new Menu
         {
@@ -98,7 +95,7 @@ public partial class AdminMenuUtilities
             return false;
         }
 
-        var (menuItem, configPath) = await GetConfig(modulePath);
+        var (menuItem, configPath) = await AdminMenuHelper.GetConfig(modulePath);
 
         menuItem ??= new MenuConfig
         {
@@ -141,7 +138,7 @@ public partial class AdminMenuUtilities
             return false;
         }
 
-        var (menuItem, configPath) = await GetConfig(modulePath);
+        var (menuItem, configPath) = await AdminMenuHelper.GetConfig(modulePath);
 
         menuItem ??= new MenuConfig
         {

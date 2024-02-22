@@ -2227,25 +2227,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\snr7\\.nuget\\packages\\": {}
+    "C:\\Users\\sebss\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.1",
     "restore": {
-      "projectUniqueName": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
+      "projectUniqueName": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
       "projectName": "AdminMenuAPI",
-      "projectPath": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
-      "packagesPath": "C:\\Users\\snr7\\.nuget\\packages\\",
-      "outputPath": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenuAPI\\obj\\",
+      "projectPath": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
+      "packagesPath": "C:\\Users\\sebss\\.nuget\\packages\\",
+      "outputPath": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\snr7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sebss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
