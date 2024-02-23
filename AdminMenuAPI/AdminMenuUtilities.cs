@@ -18,7 +18,10 @@ public partial class AdminMenuUtilities
         {
             return false;
         }
-
+        MenuConfig config = new()
+        {
+            MenuItems = new List<Menu>()
+        };
         try
         {
             // Get the type of the class
@@ -37,30 +40,26 @@ public partial class AdminMenuUtilities
                         continue;
                     }
 
-                    CategoryNameAttribute categoryName = AdminMenuHelper.GetCategoryName(method) ?? new CategoryNameAttribute("Other");
+                    CategoryNameAttribute category = AdminMenuHelper.GetCategoryName(method) ?? new CategoryNameAttribute("Other");
 
                     HashSet<string> permissions = AdminMenuHelper.GetPermissions(method);
 
                     Command command = new() { CommandName = commandName, Flag = permissions?.ToArray() };
 
-                    if (permissions != null && permissions.Count > 0)
+                    config.MenuItems.Add(new Menu
                     {
+                        Category = category.CategoryName,
+                        Commands = new Command[] { command },
+                        Flag = category.CategoryFlags ?? Array.Empty<string>() 
+                    });
 
-                        bool added = await AddCategory(modulePath, categoryName, command);
-                        if (added)
-                        {
-                            Console.WriteLine($"Added command {commandName} to category {categoryName.CategoryName} with permissions {string.Join(", ", permissions)}");
-                        }
-                        continue;
-                    }
-
-                    
-                    bool value = await AddCategory(modulePath, categoryName, command);
-                    if (value)
-                    {
-                        Console.WriteLine($"Adding command {commandName} to category {categoryName.CategoryName}");
-                    }
                 }
+            }
+
+            bool added = await AddCategory(modulePath, config);
+            if (!added)
+            {
+                return false;
             }
         }
         catch (Exception ex)

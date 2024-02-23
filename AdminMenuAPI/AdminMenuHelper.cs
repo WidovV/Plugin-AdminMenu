@@ -27,6 +27,10 @@ public partial class AdminMenuHelper
         menuItem.MenuItems = categoryPages;
         await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(menuItem, new JsonSerializerOptions { WriteIndented = true }));
     }
+    internal static async Task UpdateConfig(MenuConfig menuItem, string configPath)
+    {
+        await File.WriteAllTextAsync(configPath, JsonSerializer.Serialize(menuItem, new JsonSerializerOptions { WriteIndented = true }));
+    }
     internal static string GetConfigPath(string modulePath) => Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(modulePath).FullName).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
 
     public static string GetCommandName(MethodInfo method)
