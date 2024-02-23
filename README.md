@@ -240,11 +240,7 @@ RemoveFlagFromCommand(string modulepath, CategoryNameAttribute category, string 
     }
 ```
 ### The reason for the plugin:
-For those who have a seperate admin system and wants cross-support through different plugins to the same admin menu, this can be used.
-
-### *Note:*
-* This plugin was developed under specific conditions and might be untested in certain environments. Contributions and feedback are highly appreciated.
-* Future plans for the plugin include various enhancements and fixes, such as support for parameters, HTML colored text, and chat menus.
+This plugin/extension is designed for those who have a separate admin system and want cross-support through different plugins to the same admin menu.
 
 Future plan(s):
 
