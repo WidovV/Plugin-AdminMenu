@@ -207,7 +207,7 @@ public class MyClass : BasePlugin
 }
 ```
 Manually adding commands:
-* Available methods:
+* Available methods (they all return a boolean value showing if the action was successful):
 ```cs
 AddCategory(string modulePath, CategoryNameAttribute category, params Command[] commands)
 AddCommandToCategory(string modulePath, CategoryNameAttribute category, params Command[] commands)
@@ -236,7 +236,8 @@ RemoveFlagFromCommand(string modulepath, CategoryNameAttribute category, string 
             Flag = new string[] { "@css/root", "@css/generic" }
         };
 
-        AdminMenuUtilities.AddCategory(ModulePath, categoryName1, cmd);
+        bool value = AdminMenuUtilities.AddCategory(ModulePath, categoryName1, cmd);
+        Console.WriteLine($"{categoryName1.CategoryName} added: {value}");
     }
 ```
 ### The reason for the plugin:
