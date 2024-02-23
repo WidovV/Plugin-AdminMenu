@@ -14,6 +14,6 @@ public class CategoryNameAttribute : Attribute
     public CategoryNameAttribute(string categoryName, params string[] categoryFlags)
     {
         CategoryName = string.IsNullOrEmpty(categoryName) ? CategoryName : categoryName;
-        CategoryFlags = categoryFlags == null ? CategoryFlags : categoryFlags;
+        CategoryFlags = categoryFlags ?? CategoryFlags;
     }
 }
