@@ -29,7 +29,7 @@ public partial class AdminMenuHelper
     }
     internal static string GetConfigPath(string modulePath) => Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(modulePath).FullName).FullName).FullName, "configs", "plugins", "AdminMenu", "AdminMenu.json");
 
-    internal static string GetCommandName(MethodInfo method)
+    public static string GetCommandName(MethodInfo method)
     {
         // Get the first attribute from the method that is a ConsoleCommandAttribute
         object? attribute = method.GetCustomAttributes(typeof(ConsoleCommandAttribute), false).FirstOrDefault();
@@ -51,7 +51,7 @@ public partial class AdminMenuHelper
         return commandName;
     }
 
-    internal static CategoryNameAttribute GetCategoryName(MethodInfo method)
+    public static CategoryNameAttribute GetCategoryName(MethodInfo method)
     {
         object? attribute = method.GetCustomAttribute(typeof(CategoryNameAttribute), false);
 
@@ -65,7 +65,7 @@ public partial class AdminMenuHelper
         return categoryName;
     }
 
-    internal static HashSet<string> GetPermissions(MethodInfo method)
+    public static HashSet<string> GetPermissions(MethodInfo method)
     {
         // Get the first attribute from the method that is a RequiresPermissions or RequiresPermissionsOr attribute
         object? permissionAttribute = method.GetCustomAttribute(typeof(RequiresPermissions), false) ?? method.GetCustomAttribute(typeof(RequiresPermissionsOr), false);
