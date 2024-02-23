@@ -1,7 +1,4 @@
 ﻿using System.Reflection;
-using System.Text.Json;
-using CounterStrikeSharp.API.Core.Attributes.Registration;
-using CounterStrikeSharp.API.Modules.Admin;
 
 namespace AdminMenuAPI;
 
