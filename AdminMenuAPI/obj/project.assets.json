@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net7.0": {
-      "CounterStrikeSharp.API/1.0.160": {
+      "CounterStrikeSharp.API/1.0.169": {
         "type": "package",
         "dependencies": {
           "McMaster.NETCore.Plugins": "1.4.0",
@@ -835,14 +835,14 @@
     }
   },
   "libraries": {
-    "CounterStrikeSharp.API/1.0.160": {
-      "sha512": "VPhITAQhzPW/Ld5OStaZe71qf9fwi5xWr9FrakD+QrwSUl3LhuQ9kalikzij0a6XNv6wQWtghNzgulz7WjYr+Q==",
+    "CounterStrikeSharp.API/1.0.169": {
+      "sha512": "qgsEi/RvWFwKQXAVPYccAvAmE1b958I4l+e7ZaT2lcJXPME5YQpzwz6Vslt1jzxVC15q93AU1LG0En/gzDtmNw==",
       "type": "package",
-      "path": "counterstrikesharp.api/1.0.160",
+      "path": "counterstrikesharp.api/1.0.169",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "counterstrikesharp.api.1.0.160.nupkg.sha512",
+        "counterstrikesharp.api.1.0.169.nupkg.sha512",
         "counterstrikesharp.api.nuspec",
         "lib/net7.0/CounterStrikeSharp.API.dll",
         "lib/net7.0/CounterStrikeSharp.API.runtimeconfig.json",
@@ -2223,7 +2223,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "CounterStrikeSharp.API >= 1.0.160"
+      "CounterStrikeSharp.API >= *"
     ]
   },
   "packageFolders": {
@@ -2231,7 +2231,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.1",
+    "version": "0.1.1",
     "restore": {
       "projectUniqueName": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
       "projectName": "AdminMenuAPI",
@@ -2278,7 +2278,7 @@
         "dependencies": {
           "CounterStrikeSharp.API": {
             "target": "Package",
-            "version": "[1.0.160, )"
+            "version": "[*, )"
           }
         },
         "imports": [

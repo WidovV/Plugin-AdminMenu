@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZUNlFAJzkwXKR4sH44UW+Gb91xYqQL1bQqD1OPNeW2LNbMvz6wbYGZIg3ksW17yJhxJJ83suLHVK0Njo9hATVw==",
+  "dgSpecHash": "has02479ZRRj2SgT2zwGfXfTrfvi28NyPcUihxli9ldZI4EsHk8oO/lOsix0Juxf3HxIadwHew7TDIgGLhc7BA==",
   "success": true,
   "projectFilePath": "C:\\github\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\sebss\\.nuget\\packages\\counterstrikesharp.api\\1.0.160\\counterstrikesharp.api.1.0.160.nupkg.sha512",
+    "C:\\Users\\sebss\\.nuget\\packages\\counterstrikesharp.api\\1.0.169\\counterstrikesharp.api.1.0.169.nupkg.sha512",
     "C:\\Users\\sebss\\.nuget\\packages\\mcmaster.netcore.plugins\\1.4.0\\mcmaster.netcore.plugins.1.4.0.nupkg.sha512",
     "C:\\Users\\sebss\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\sebss\\.nuget\\packages\\microsoft.dotnet.apicompat.task\\7.0.404\\microsoft.dotnet.apicompat.task.7.0.404.nupkg.sha512",
