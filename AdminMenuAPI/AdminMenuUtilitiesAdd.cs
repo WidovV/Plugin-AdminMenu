@@ -52,11 +52,13 @@ public partial class AdminMenuUtilities
             MenuItems = new List<Menu>()
         };
 
+        // First time actually using operator overloading in a project, lol
         menuItem += config;
 
         await AdminMenuHelper.UpdateConfig(menuItem, configPath);
         return true;
     }
+
     public static async Task<bool> AddCommandToCategory(string modulePath, CategoryNameAttribute category, MenuConfig menuItem, params Command[] commands)
     {
 

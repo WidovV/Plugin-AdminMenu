@@ -53,17 +53,12 @@ public partial class AdminMenuUtilities
                 }
             }
 
-            bool added = await AddCategory(modulePath, config);
-            if (!added)
-            {
-                return false;
-            }
+            return await AddCategory(modulePath, config);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex);
             throw;
         }
-        return true;
     }
 }
