@@ -251,3 +251,5 @@ Future plan(s):
 - [ ] Test/support html colored text
 - [ ] Support chat menus
 - [x] Add Admin menu & commands menu title to config 
+- [ ] Create a wiki
+- [ ] Release as a NuGet package
