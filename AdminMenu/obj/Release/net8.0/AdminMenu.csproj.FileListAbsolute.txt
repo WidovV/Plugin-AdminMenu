@@ -1,0 +1,13 @@
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\bin\Release\net8.0\AdminMenu.deps.json
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\bin\Release\net8.0\AdminMenu.dll
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\bin\Release\net8.0\AdminMenu.pdb
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\AdminMenu.csproj.AssemblyReference.cache
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\AdminMenu.GeneratedMSBuildEditorConfig.editorconfig
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\AdminMenu.AssemblyInfoInputs.cache
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\AdminMenu.AssemblyInfo.cs
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\AdminMenu.csproj.CoreCompileInputs.cache
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\AdminMenu.sourcelink.json
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\AdminMenu.dll
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\refint\AdminMenu.dll
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\AdminMenu.pdb
+E:\Github\cs2-cph\plugins\Plugin-AdminMenu\AdminMenu\obj\Release\net8.0\ref\AdminMenu.dll

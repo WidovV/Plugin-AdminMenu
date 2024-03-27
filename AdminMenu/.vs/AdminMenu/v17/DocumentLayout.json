@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5CF15047-051A-45AF-865D-6752135D1831}|AdminMenu.csproj|e:\\github\\cs2-cph\\plugins\\plugin-adminmenu\\adminmenu\\adminmenu.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{5CF15047-051A-45AF-865D-6752135D1831}|AdminMenu.csproj|solutionrelative:adminmenu.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5CF15047-051A-45AF-865D-6752135D1831}|AdminMenu.csproj|e:\\github\\cs2-cph\\plugins\\plugin-adminmenu\\adminmenu\\adminmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CF15047-051A-45AF-865D-6752135D1831}|AdminMenu.csproj|solutionrelative:adminmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CF15047-051A-45AF-865D-6752135D1831}|AdminMenu.csproj|e:\\github\\cs2-cph\\plugins\\plugin-adminmenu\\adminmenu\\menuconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CF15047-051A-45AF-865D-6752135D1831}|AdminMenu.csproj|solutionrelative:menuconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CF15047-051A-45AF-865D-6752135D1831}|AdminMenu.csproj|e:\\github\\cs2-cph\\plugins\\plugin-adminmenu\\adminmenu\\adminmenu.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5CF15047-051A-45AF-865D-6752135D1831}|AdminMenu.csproj|solutionrelative:adminmenu.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,39 +31,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdminMenu.csproj",
-              "DocumentMoniker": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\AdminMenu.csproj",
-              "RelativeDocumentMoniker": "AdminMenu.csproj",
-              "ToolTip": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\AdminMenu.csproj",
-              "RelativeToolTip": "AdminMenu.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-02-23T06:58:02.444Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MenuConfig.cs",
-              "DocumentMoniker": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\MenuConfig.cs",
-              "RelativeDocumentMoniker": "MenuConfig.cs",
-              "ToolTip": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\MenuConfig.cs",
-              "RelativeToolTip": "MenuConfig.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAA6wB4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-06T12:15:20.526Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "AdminMenu.cs",
               "DocumentMoniker": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\AdminMenu.cs",
               "RelativeDocumentMoniker": "AdminMenu.cs",
               "ToolTip": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\AdminMenu.cs",
               "RelativeToolTip": "AdminMenu.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAYwE4AAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-06T12:11:12.884Z"
+              "WhenOpened": "2024-03-27T10:27:16.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminMenu",
+              "DocumentMoniker": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\AdminMenu.csproj",
+              "RelativeDocumentMoniker": "AdminMenu.csproj",
+              "ToolTip": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenu\\AdminMenu.csproj",
+              "RelativeToolTip": "AdminMenu.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-27T10:27:14.629Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",

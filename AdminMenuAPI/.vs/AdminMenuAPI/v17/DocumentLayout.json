@@ -42,8 +42,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{f5cd1b51-c771-5648-966f-646d419b1e7c}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -54,8 +62,7 @@
               "RelativeToolTip": "AdminMenuUtilitiesAdd.cs",
               "ViewState": "AQIAAPkAAAAAAAAAAAAQwBABAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T10:26:08.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T10:26:08.748Z"
             },
             {
               "$type": "Document",
@@ -67,8 +74,7 @@
               "RelativeToolTip": "AdminMenuUtilities.cs",
               "ViewState": "AQIAAB0AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T10:26:04.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T10:26:04.673Z"
             },
             {
               "$type": "Document",
@@ -80,8 +86,7 @@
               "RelativeToolTip": "AdminMenuHelper.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T10:25:58.265Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T10:25:58.265Z"
             },
             {
               "$type": "Document",
@@ -93,8 +98,7 @@
               "RelativeToolTip": "AdminMenuUtilitiesRemove.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T10:25:57.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T10:25:57.058Z"
             },
             {
               "$type": "Document",
@@ -106,8 +110,7 @@
               "RelativeToolTip": "CategoryAttribute.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T10:25:56.226Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T10:25:56.226Z"
             },
             {
               "$type": "Document",
@@ -119,13 +122,12 @@
               "RelativeToolTip": "MenuConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T10:25:46.857Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T10:25:46.857Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdminMenuAPI",
+              "Title": "AdminMenuAPI.csproj",
               "DocumentMoniker": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
               "RelativeDocumentMoniker": "AdminMenuAPI.csproj",
               "ToolTip": "E:\\Github\\cs2-cph\\plugins\\Plugin-AdminMenu\\AdminMenuAPI\\AdminMenuAPI.csproj",
@@ -134,18 +136,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-03-27T10:25:40.636Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{f5cd1b51-c771-5648-966f-646d419b1e7c}"
             },
             {
               "$type": "Document",
