@@ -63,7 +63,7 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
     }
 
     [ConsoleCommand("css_reloadadminmenu")]
-    [RequiresPermissions("css/root")]
+    [RequiresPermissions("@css/root")]
     public void ReloadAdminMenuCommand(CCSPlayerController player, CommandInfo info)
     {
         GetConfig();
@@ -76,7 +76,7 @@ public class AdminMenu : BasePlugin, IPluginConfig<MenuConfig>
         player.PrintToChat("Admin menu reloaded");
     }
 
-    [RequiresPermissions($"css/generic")]
+    [RequiresPermissions($"@css/generic")]
     public void AdminMenuCommand(CCSPlayerController player, CommandInfo info)
     {
         if (player == null || !player.IsValid || player.IsBot)
